@@ -1,10 +1,9 @@
 from datetime import datetime
-
 import pytest
-
 from tut08_parametrizing_fixtures.myapp.student import is_eligible_for_degree
 
-@pytest.mark.parametrize("credits","20")
+
+@pytest.mark.parametrize("dummy_student", [27], indirect=["dummy_student"])
 def test_student_get_age(dummy_student):
     dummy_student_age = (datetime.now() - dummy_student.dob).days // 365
     assert dummy_student.get_age() == dummy_student_age
